@@ -16,7 +16,10 @@ namespace L01_2022CG650_2022CC601.Controllers
             _blogContexto = blogContext;
         }
 
-        // GET: api/Usuarios/GetAllUsuarios
+        /// <summary>
+        /// EndPoint que retorna el listado de todos los usuarios existentes
+        /// </summary>
+        ///
         [HttpGet]
         [Route("GetAllUsuarios")]
         public IActionResult GetUsuarios()
