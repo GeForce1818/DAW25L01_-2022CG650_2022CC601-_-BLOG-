@@ -17,13 +17,12 @@ namespace L01_2022CG650_2022CC601.Controllers
             _blogContexto = blogContext;
         }
 
-        // GET: api/Comentarios/GetAllComentarios
+        
         [HttpGet]
-        [Route("GetAllComentarios")]
+        [Route("GetAllComentarios/Ver todos los comentarios :D")]
         public IActionResult GetComentarios()
         {
-            var listaComentarios = (from c in _blogContexto.comentarios
-                                    select c).ToList();
+            var listaComentarios = (from c in _blogContexto.comentarios select c).ToList();
             if (listaComentarios.Count == 0)
             {
                 return NotFound();
@@ -31,14 +30,12 @@ namespace L01_2022CG650_2022CC601.Controllers
             return Ok(listaComentarios);
         }
 
-        // GET: api/Comentarios/GetByIdComentario/{id}
+        
         [HttpGet]
-        [Route("GetByIdComentario/{id}")]
+        [Route("GetByIdComentario/Filtro por Id/{id}")]
         public IActionResult GetComentario(int id)
         {
-            var comentario = (from c in _blogContexto.comentarios
-                              where c.cometarioId == id
-                              select c).FirstOrDefault();
+            var comentario = (from c in _blogContexto.comentarios where c.cometarioId == id select c).FirstOrDefault();
             if (comentario == null)
             {
                 return NotFound();
@@ -46,14 +43,12 @@ namespace L01_2022CG650_2022CC601.Controllers
             return Ok(comentario);
         }
 
-        // GET: api/Comentarios/GetComentariosByUsuario/{usuarioId}
+        
         [HttpGet]
-        [Route("GetComentariosByUsuario/{usuarioId}")]
+        [Route("GetComentariosByUsuario/Filtro por usuario/{usuarioId}")]
         public IActionResult GetComentariosByUsuario(int usuarioId)
         {
-            var comentarios = (from c in _blogContexto.comentarios
-                               where c.usuarioId == usuarioId
-                               select c).ToList();
+            var comentarios = (from c in _blogContexto.comentarios where c.usuarioId == usuarioId select c).ToList();
             if (comentarios.Count == 0)
             {
                 return NotFound();
@@ -61,7 +56,7 @@ namespace L01_2022CG650_2022CC601.Controllers
             return Ok(comentarios);
         }
 
-        // POST: api/Comentarios/AddComentario
+        
         [HttpPost]
         [Route("AddComentario/Añadir comentarios")]
         public IActionResult AddComentario([FromBody] comentarios comentario)
@@ -78,14 +73,12 @@ namespace L01_2022CG650_2022CC601.Controllers
             }
         }
 
-        // PUT: api/Comentarios/actualizar/{id}
+        
         [HttpPut]
         [Route("Actualizar comentarios/{id}")]
         public IActionResult ActualizarComentario(int id, [FromBody] comentarios comentarioModificar)
         {
-            var comentarioActual = (from c in _blogContexto.comentarios
-                                    where c.cometarioId == id
-                                    select c).FirstOrDefault();
+            var comentarioActual = (from c in _blogContexto.comentarios where c.cometarioId == id select c).FirstOrDefault();
 
             if (comentarioActual == null)
             {
@@ -102,14 +95,12 @@ namespace L01_2022CG650_2022CC601.Controllers
             return Ok(comentarioActual);
         }
 
-        // DELETE: api/Comentarios/eliminar/{id}
+        
         [HttpDelete]
         [Route("Eliminar comentarios/{id}")]
         public IActionResult EliminarComentario(int id)
         {
-            var comentario = (from c in _blogContexto.comentarios
-                              where c.cometarioId == id
-                              select c).FirstOrDefault();
+            var comentario = (from c in _blogContexto.comentarios where c.cometarioId == id select c).FirstOrDefault();
             if (comentario == null)
             {
                 return NotFound();
